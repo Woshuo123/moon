@@ -5,7 +5,7 @@ from wechatpy.client.api import WeChatMessage, WeChatTemplate
 import requests
 import os
 
-today = datetime.now()
+today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 city = os.environ['CITY']
 start_date = os.environ['START_DATE']
@@ -23,16 +23,8 @@ def get_weather():
 
 
 def get_count():
-    delta = today - datetime.strptime(start_date, "%Y-%m-%d")
+    delta = datetime.now() - datetime.strptime(start_date, "%Y-%m-%d")
     return delta.days
-
-
-def get_loveday():
-    next = datetime.strptime(str(date.today().year) + "-" + start_date, "%Y-%m-%d")
-    if next < datetime.now():
-        next = next.replace(year=next.year + 1)
-    return (next - today).days
-
 
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
