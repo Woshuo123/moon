@@ -7,7 +7,7 @@ import os
 
 today = datetime.now()
 
-start_date = os.environ['START_DATE']
+start_date = os.environ['BEGIN_DAY']
 city = os.environ['CITY']
 app_id = os.environ['APP_ID']
 app_secret = os.environ['APP_SECRET']
