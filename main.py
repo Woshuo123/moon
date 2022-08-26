@@ -1,11 +1,11 @@
-from datetime import date, datetime
+from datetime import datetime, timedelta
 import math
 from wechatpy import WeChatClient
 from wechatpy.client.api import WeChatMessage, WeChatTemplate
 import requests
 import os
 
-today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+today = (datetime.now() + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S")
 
 city = os.environ['CITY']
 start_date = os.environ['START_DATE']
@@ -23,7 +23,7 @@ def get_weather():
 
 
 def get_count():
-    delta = datetime.now() - datetime.strptime(start_date, "%Y-%m-%d")
+    delta = (datetime.now() + timedelta(hours=8)) - datetime.strptime(start_date, "%Y-%m-%d %H:%M:%S")
     return delta.days
 
 client = WeChatClient(app_id, app_secret)
