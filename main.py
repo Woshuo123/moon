@@ -12,6 +12,7 @@ start_date = os.environ['START_DATE']
 app_id = os.environ['APP_ID']
 app_secret = os.environ['APP_SECRET']
 user_id = os.environ["USER_ID"]
+user_id1 = os.environ["USER_ID1"]
 template_id = os.environ["TEMPLATE_ID"]
 
 
@@ -33,4 +34,4 @@ data = {"day": {"value": today}, "temperature": {"value": temperature}, "love_da
         "weather": {"value": wea}, "city": {"value": city}, "max_temperature": {"value": high},
         "min_temperature": {"value": low}, "body_temperature": {"value": temperature}}
 res = wm.send_template(user_id, template_id, data)
-print(res)
+res1 = wm.send_template(user_id1, template_id, data)
